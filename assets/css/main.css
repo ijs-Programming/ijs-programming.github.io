@@ -6,13 +6,13 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
-/* .logo img {
+ .logo img {
     width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
     border-radius: 50%;
-} */
+} 
 
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -1297,24 +1297,7 @@ input, select, textarea {
 				display: none;
 			}
 
-		#header .logo {
-			width: 5.5rem;
-			height: 5.5rem;
-			line-height: 5.5rem;
-			border: solid 1px #ffffff;
-			border-radius: 100%;
-		}
 
-			#header .logo .icon:before {
-				font-size: 2rem;
-			}
-			#header .logo img {
-    width: 100%;       /* Makes image fill the circle */
-    height: 100%;      /* Makes image fill the circle */
-    object-fit: cover; /* Prevents stretching (crops to fit) */
-    border-radius: 100%; /* Keeps the image circular */
-    display: block;    /* Removes weird bottom spacing */
-}
 
 		#header .content {
 			border-style: solid;
@@ -1673,3 +1656,11 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+	#wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers vertically */
+    align-items: center;     /* Centers horizontally */
+    min-height: 100vh;       /* Makes it the full height of the screen */
+    padding: 2rem 0;         /* Adds a little breathing room */
+}
