@@ -1801,25 +1801,41 @@ body.is-preload #footer {
 		/* Smooth hover effect */
 	}
 
-	.corner-logo img {
+	#footer {
 		width: 100%;
+		text-align: center;
+		padding: 2rem 0;
+		opacity: 0.6;
+		/* Makes the whole footer slightly transparent */
+		transition: opacity 0.3s ease;
+	}
+
+	#footer:hover {
+		opacity: 1;
+		/* Brightens up when someone hovers over it */
+	}
+
+	.footer-logo {
+		width: 40px;
+		/* Small and subtle */
 		height: auto;
-		display: block;
-		/* Optional: filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); */
+		margin-bottom: 1rem;
+		filter: grayscale(100%);
+		/* Makes the logo match the gray theme */
 	}
 
-	/* Makes it shrink or move slightly when you hover over it */
-	.corner-logo:hover {
-		transform: scale(1.1);
-		cursor: pointer;
+	#footer .copyright {
+		color: #ffffff;
+		font-size: 0.8rem;
+		letter-spacing: 0.1rem;
+		text-transform: uppercase;
+		margin-bottom: 0.5rem;
 	}
 
-	/* Mobile fix: makes it smaller on phones so it doesn't block content */
-	@media screen and (max-width: 480px) {
-		.corner-logo {
-			width: 50px;
-			bottom: 10px;
-			right: 10px;
-		}
+	#footer .location {
+		color: rgba(255, 255, 255, 0.5);
+		/* Semi-transparent white/gray */
+		font-size: 0.7rem;
+		font-style: italic;
 	}
 }
