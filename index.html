@@ -84,17 +84,27 @@
 			</article>
 
 		</div>
-
-		<footer id="footer">
-			<div class="corner-logo-container">
-				<img src="images/logo.png" alt="ijs logo" class="footer-logo">
-			</div>
-			<p class="copyright">&copy; Official ijs Programming. All rights reserved.</p>
-			<p class="location">Based in the Netherlands</p>
-		</footer>
-		<div id="background"></div>
-
 	</div>
+	</div>
+	<footer id="footer" style="position: fixed; bottom: 0; width: 100%; z-index: 1000; pointer-events: none;">
+		<div style="position: relative; width: 100%; max-width: 100%; height: 100%;">
+			<div style="position: absolute; right: 30px; bottom: 30px; pointer-events: auto;">
+				<img src="images/logo.png" alt="ijs logo" style="width: 240px; height: auto; display: block;">
+			</div>
+
+			<div style="text-align: center; padding-bottom: 20px; pointer-events: auto;">
+				<p
+					style="color: rgba(255,255,255,0.4); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2rem; margin: 0;">
+					&copy; Official ijs Programming. All rights reserved.
+				</p>
+				<p style="color: rgba(255,255,255,0.2); font-size: 0.6rem; margin: 0; font-style: italic;">
+					Based in the Netherlands
+				</p>
+			</div>
+		</div>
+	</footer>
+
+	<div id="background"></div>
 
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
