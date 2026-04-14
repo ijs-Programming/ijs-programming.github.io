@@ -1907,14 +1907,15 @@ body.is-article-visible #background {
 #wrapper {
     background: transparent !important;
 }
-/* 1. Center the Main Content */
+
 #header {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 80vh; /* Pushes content toward the vertical center */
+    min-height: 100vh; /* Takes full screen height */
     text-align: center;
+    padding-bottom: 20vh; /* Pushes the text roughly 20% higher than the center */
 }
 
 /* 2. Logo Hover Animation (Grow) */
