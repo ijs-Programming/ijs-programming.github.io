@@ -1786,17 +1786,17 @@ body.is-preload #footer {
 }
 
 .footer-logo {
-	width: 45px;
-	height: auto;
-	margin-bottom: 1rem;
-	opacity: 0.5;
-	transition: opacity 0.3s ease;
-	filter: grayscale(100%);
+    width: 45px;
+    height: auto;
+    margin-bottom: 1rem;
+    display: inline-block;
+    /* Removed grayscale and opacity so it shows original colors */
 }
 
-#footer:hover .footer-logo {
-	opacity: 1;
-	filter: grayscale(0%);
+/* Optional: If you want it to "glow" or slightly enlarge when hovered */
+.footer-logo:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
 }
 
 #footer .copyright {
