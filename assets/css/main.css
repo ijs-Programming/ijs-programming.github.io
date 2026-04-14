@@ -1830,3 +1830,55 @@ body.is-preload #footer {
 #background {
 	z-index: -1;
 }
+/* --- IJS FINAL THEME REPAIR --- */
+
+/* 1. Fix the Background Visibility */
+#wrapper {
+    display: block !important; /* Disabling flex to let the BG script work */
+    position: relative;
+    z-index: 2;
+}
+
+#background {
+    display: block !important;
+    z-index: 1 !important;
+}
+
+/* 2. Positioning the Logo in the Right Corner */
+.corner-logo-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.footer-logo {
+    width: 150px; /* 3x bigger than the previous size */
+    height: auto;
+    display: block;
+}
+
+/* 3. Styling the Footer Text (Centered) */
+#footer {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+#footer .copyright {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    border: none;
+}
+
+#footer .location {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.6rem;
+}
+
+/* Mobile Fix: Scale logo down so it doesn't cover text on phones */
+@media screen and (max-width: 480px) {
+    .footer-logo {
+        width: 80px;
+    }
+}
