@@ -1786,17 +1786,17 @@ body.is-preload #footer {
 }
 
 .footer-logo {
-    width: 45px;
-    height: auto;
-    margin-bottom: 1rem;
-    display: inline-block;
-    /* Removed grayscale and opacity so it shows original colors */
+	width: 45px;
+	height: auto;
+	margin-bottom: 1rem;
+	display: inline-block;
+	/* Removed grayscale and opacity so it shows original colors */
 }
 
 /* Optional: If you want it to "glow" or slightly enlarge when hovered */
 .footer-logo:hover {
-    transform: scale(1.05);
-    transition: transform 0.2s ease;
+	transform: scale(1.05);
+	transition: transform 0.2s ease;
 }
 
 #footer .copyright {
@@ -1830,100 +1830,149 @@ body.is-preload #footer {
 #background {
 	z-index: -1;
 }
+
 /* --- IJS FINAL THEME REPAIR --- */
 
 /* 1. Fix the Background Visibility */
 #wrapper {
-    display: block !important; /* Disabling flex to let the BG script work */
-    position: relative;
-    z-index: 2;
+	display: block !important;
+	/* Disabling flex to let the BG script work */
+	position: relative;
+	z-index: 2;
 }
 
 #background {
-    display: block !important;
-    z-index: 1 !important;
+	display: block !important;
+	z-index: 1 !important;
 }
 
 /* 2. Positioning the Logo in the Right Corner */
 .corner-logo-container {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
 }
 
 .footer-logo {
-    width: 150px; /* 3x bigger than the previous size */
-    height: auto;
-    display: block;
+	width: 150px;
+	/* 3x bigger than the previous size */
+	height: auto;
+	display: block;
 }
 
 /* 3. Styling the Footer Text (Centered) */
 #footer {
-    padding: 2rem 0;
-    text-align: center;
+	padding: 2rem 0;
+	text-align: center;
 }
 
 #footer .copyright {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    border: none;
+	color: rgba(255, 255, 255, 0.4);
+	font-size: 0.7rem;
+	text-transform: uppercase;
+	letter-spacing: 0.2rem;
+	border: none;
 }
 
 #footer .location {
-    color: rgba(255, 255, 255, 0.2);
-    font-size: 0.6rem;
+	color: rgba(255, 255, 255, 0.2);
+	font-size: 0.6rem;
 }
 
 /* Mobile Fix: Scale logo down so it doesn't cover text on phones */
 @media screen and (max-width: 480px) {
-    .footer-logo {
-        width: 80px;
-    }
+	.footer-logo {
+		width: 80px;
+	}
 }
+
 /* FORCE BACKGROUND VISIBILITY */
 #background {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background-image: url('../../images/bg.jpg') !important; /* Note the ../../ to get out of the CSS folder */
-    background-size: cover !important;
-    background-position: center !important;
-    background-attachment: fixed !important;
-    z-index: -1 !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+	position: fixed !important;
+	top: 0 !important;
+	left: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	background-image: url('../../images/bg.jpg') !important;
+	/* Note the ../../ to get out of the CSS folder */
+	background-size: cover !important;
+	background-position: center !important;
+	background-attachment: fixed !important;
+	z-index: -1 !important;
+	opacity: 1 !important;
+	visibility: visible !important;
 }
 
 /* Remove any template blur that might be hiding it */
 body.is-article-visible #background {
-    filter: blur(5px); /* Optional: keeps the blur effect when a window is open */
+	filter: blur(5px);
+	/* Optional: keeps the blur effect when a window is open */
 }
 
 /* Ensure the wrapper doesn't have its own solid background */
 #wrapper {
-    background: transparent !important;
+	background: transparent !important;
 }
 
 #header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Takes full screen height */
-    text-align: center;
-    padding-bottom: 20vh; /* Pushes the text roughly 20% higher than the center */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	/* Takes full screen height */
+	text-align: center;
+	padding-bottom: 20vh;
+	/* Pushes the text roughly 20% higher than the center */
 }
 
 /* 2. Logo Hover Animation (Grow) */
 .footer-logo {
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-    cursor: pointer;
+	transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+	cursor: pointer;
 }
 
 .footer-logo:hover {
-    transform: scale(1.2); /* Makes it 20% bigger on hover */
+	transform: scale(1.2);
+	/* Makes it 20% bigger on hover */
+}
+
+/* Video Grid Layout */
+.video-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	/* Creates 3 equal columns */
+	gap: 20px;
+	/* Space between the videos */
+	margin-top: 2rem;
+}
+
+.video-item {
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 8px;
+	padding: 10px;
+	text-align: center;
+}
+
+.video-item video {
+	width: 100%;
+	/* Makes video fit the column width */
+	height: auto;
+	border-radius: 4px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-item p {
+	margin-top: 10px;
+	font-size: 0.8rem;
+	color: rgba(255, 255, 255, 0.7);
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+}
+
+/* Mobile Fix: On phones, show 1 video per row instead of 3 */
+@media screen and (max-width: 736px) {
+	.video-grid {
+		grid-template-columns: 1fr;
+	}
 }
