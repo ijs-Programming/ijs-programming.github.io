@@ -2000,9 +2000,9 @@ html, body {
 
 /* 2. Responsive Logo */
 .footer-logo {
-    width: 15vw; 
-    min-width: 120px;
-    max-width: 240px;
+    width: 7vw; 
+    min-width: 40px;
+    max-width: 80px;
     height: auto;
     transition: transform 0.3s ease;
 }
