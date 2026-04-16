@@ -2023,3 +2023,62 @@ html, body {
     background-size: cover;
     background-position: center;
 }
+/* --- HIRING TAB STYLING --- */
+
+.table-wrapper {
+    margin: 2rem 0;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+table tbody tr:nth-child(2n + 1) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+table th {
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.tos-box {
+    background: rgba(255, 0, 0, 0.03); /* Slight red tint for 'Terms' */
+    border-left: 4px solid rgba(255, 255, 255, 0.2);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.tos-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.tos-box li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.tos-box li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.hiring-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+}
+
+@media screen and (max-width: 736px) {
+    .hiring-info-grid {
+        grid-template-columns: 1fr;
+    }
+}
