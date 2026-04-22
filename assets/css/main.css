@@ -2096,3 +2096,25 @@ table th {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
 }
+/* Contact Section Icon Styling */
+#contact .icons li {
+    padding: 0 1.5rem; /* Space between icons */
+}
+
+#contact .icons a {
+    font-size: 3.5rem; /* Big, clickable icons */
+    border-bottom: none;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect: Discord */
+#contact .icons .fa-discord:hover {
+    color: #5865F2 !important;
+    transform: translateY(-5px);
+}
+
+/* Hover Effect: Gmail Red */
+#contact .icons .fa-envelope:hover {
+    color: #EA4335 !important; 
+    transform: translateY(-5px);
+}
