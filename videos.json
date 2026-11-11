@@ -30,5 +30,13 @@
     "description": "Tool equip framework, you can equip a sword and your animations change, you can\n\t\t\t\t\t\t\tmultidirectional dash,\n\t\t\t\t\t\t\tcustom animation framework and a weapon postion loader.",
     "addedAt": "2026-11-11T00:00:00Z",
     "order": 3
+  },
+  {
+    "id": "6h-jvIf7ohw",
+    "type": "youtube",
+    "youtubeId": "6h-jvIf7ohw",
+    "title": "Experimental Combat System",
+    "description": "A simple parry based combat system, with abilities, parrying, blocking, guard break, dodging, stun systems and server authorative hitboxes",
+    "addedAt": "2026-11-11T15:51:31Z"
   }
 ]
