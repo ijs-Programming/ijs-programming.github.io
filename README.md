@@ -10,7 +10,7 @@ Run this from the repository folder, using your video's YouTube link:
 python3 scripts/add_video.py --youtube "https://www.youtube.com/watch?v=VIDEO_ID"
 ```
 
-The helper asks for a title and description, then adds the link to `videos.json`. It accepts normal YouTube, `youtu.be`, Shorts, and live video links. The video plays inside the site using an embedded player; it still streams from YouTube. Publish it with:
+The helper asks for a title and description, then adds the link to `videos.json`. The title appears above the description on the video card. It accepts normal YouTube, `youtu.be`, Shorts, and live video links. The video plays inside the site using an embedded player; it still streams from YouTube. Publish it with:
 
 ```bash
 git add videos.json

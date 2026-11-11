@@ -18,8 +18,6 @@ function markNewest() {
   const cards = [...videoGrid.querySelectorAll('.video-item')];
   cards.forEach((card, index) => {
     card.classList.toggle('is-newest', index === 0);
-    const description = card.querySelector('p');
-    description.dataset.number = String(index + 1).padStart(2, '0');
     card.querySelector('.new-badge')?.remove();
     if (index === 0) {
       const badge = document.createElement('span');
@@ -95,9 +93,12 @@ function makeCard(entry) {
   icon.textContent = '▶';
   button.append(icon);
   wrapper.append(button);
+  const heading = document.createElement('h3');
+  heading.className = 'video-title';
+  heading.textContent = entry.title;
   const description = document.createElement('p');
   description.textContent = entry.description;
-  card.append(wrapper, description);
+  card.append(wrapper, heading, description);
   return card;
 }
 
