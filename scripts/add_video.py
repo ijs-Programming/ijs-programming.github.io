@@ -49,6 +49,7 @@ def main():
     parser.add_argument('--youtube', metavar='URL', help='YouTube video link or 11-character video ID')
     parser.add_argument('--title', help='Short title shown on the video thumbnail')
     parser.add_argument('--description', help='Description shown below the video')
+    parser.add_argument('--category', help='Existing or new showcase category')
     parser.add_argument('--poster', type=Path, help='Optional JPG, PNG, or WebP thumbnail')
     args = parser.parse_args()
 
@@ -74,15 +75,26 @@ def main():
     if not title or not description:
         parser.error('Title and description are required.')
 
+    entries = json.loads(CATALOG.read_text(encoding='utf-8'))
+    if not isinstance(entries, list):
+        parser.error('videos.json must contain a list.')
+    categories = sorted({entry['category'] for entry in entries if entry.get('category')}, key=str.casefold)
+    prompt = f'Category ({", ".join(categories)}; or type a new one): '
+    category_input = args.category if args.category is not None else input(prompt)
+    category_input = ' '.join(category_input.split())
+    if not category_input or len(category_input) > 60:
+        parser.error('Category must be between 1 and 60 characters.')
+    if category_input.casefold() == 'all':
+        parser.error('All is reserved for the gallery filter; choose a category name.')
+    category = next((name for name in categories if name.casefold() == category_input.casefold()), category_input)
+    new_category = category not in categories
+
     poster = None
     if args.poster:
         poster = args.poster.expanduser().resolve()
         if not poster.is_file() or poster.suffix.lower() not in {'.jpg', '.jpeg', '.png', '.webp'}:
             parser.error('Poster must be an existing JPG, PNG, or WebP image.')
 
-    entries = json.loads(CATALOG.read_text(encoding='utf-8'))
-    if not isinstance(entries, list):
-        parser.error('videos.json must contain a list.')
     if args.youtube:
         if any(entry.get('youtubeId') == video_id for entry in entries):
             parser.error('That YouTube video is already in the showcase.')
@@ -92,10 +104,13 @@ def main():
             'youtubeId': video_id,
             'title': title,
             'description': description,
+            'category': category,
             'addedAt': datetime.now(timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
         })
         CATALOG.write_text(json.dumps(entries, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
         print(f'Added YouTube video: {title}')
+        if new_category:
+            print(f'Created category: {category}')
         print('To publish: git add videos.json && git commit -m "Add showcase video" && git push origin main')
         return
     slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')[:45] or 'video'
@@ -109,6 +124,7 @@ def main():
         'type': 'local',
         'title': title,
         'description': description,
+        'category': category,
         'src': f'videos/{destination.name}',
         'addedAt': datetime.now(timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
     }
@@ -119,6 +135,8 @@ def main():
     entries.append(entry)
     CATALOG.write_text(json.dumps(entries, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(f'Added {title} as {destination.relative_to(ROOT)}')
+    if new_category:
+        print(f'Created category: {category}')
     print('To publish: git add videos.json videos/ && git commit -m "Add showcase video" && git push origin main')
 
 

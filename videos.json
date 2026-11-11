@@ -6,7 +6,8 @@
     "description": "Ghost entity, spawns always in front of player and doesn't spawn if you look at a wall,\n\t\t\t\t\t\t\tthe ghostly effect is made with tweens, depending on what essence you give him something\n\t\t\t\t\t\t\tdifferent happens and\n\t\t\t\t\t\t\tplayer gets all kinds of client sided effects.",
     "addedAt": "2026-11-11T00:00:00Z",
     "order": 0,
-    "title": "Ghost Entity System"
+    "title": "Ghost Entity System",
+    "category": "Horror"
   },
   {
     "id": "fao7F6kPKzU",
@@ -15,7 +16,8 @@
     "description": "FPS shooter game with lots of gore and ragdoll mechanics. Limbs also fly off depending on\n\t\t\t\t\t\t\twhere you hit your target.",
     "addedAt": "2026-11-11T00:00:00Z",
     "order": 1,
-    "title": "FPS Combat & Ragdoll System"
+    "title": "FPS Combat & Ragdoll System",
+    "category": "Combat"
   },
   {
     "id": "kB9s2lICdAs",
@@ -24,7 +26,8 @@
     "description": "Brainrot game example, advanced UI systems and animation framework, tycoon framework,\n\t\t\t\t\t\t\tbrainrot collection framework,\n\t\t\t\t\t\t\tspawning system, rarity loottable system and player stat system",
     "addedAt": "2026-11-11T00:00:00Z",
     "order": 2,
-    "title": "Brainrot Tycoon Framework"
+    "title": "Brainrot Tycoon Framework",
+    "category": "Incremental Games"
   },
   {
     "id": "RQvTeZ_gHwc",
@@ -33,7 +36,8 @@
     "description": "Tool equip framework, you can equip a sword and your animations change, you can\n\t\t\t\t\t\t\tmultidirectional dash,\n\t\t\t\t\t\t\tcustom animation framework and a weapon postion loader.",
     "addedAt": "2026-11-11T00:00:00Z",
     "order": 3,
-    "title": "Tool Equip & Dash Framework"
+    "title": "Tool Equip & Dash Framework",
+    "category": "Combat"
   },
   {
     "id": "6h-jvIf7ohw",
@@ -41,6 +45,7 @@
     "youtubeId": "6h-jvIf7ohw",
     "title": "Experimental Combat System",
     "description": "A simple parry based combat system, with abilities, parrying, blocking, guard break, dodging, stun systems and server authorative hitboxes",
-    "addedAt": "2026-11-11T15:51:31Z"
+    "addedAt": "2026-11-11T15:51:31Z",
+    "category": "Combat"
   }
 ]

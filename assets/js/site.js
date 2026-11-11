@@ -13,20 +13,23 @@ nav.addEventListener('click', (event) => {
 });
 
 const videoGrid = document.querySelector('.video-grid');
-
-function markNewest() {
-  const cards = [...videoGrid.querySelectorAll('.video-item')];
-  cards.forEach((card, index) => {
-    card.classList.toggle('is-newest', index === 0);
-    card.querySelector('.new-badge')?.remove();
-    if (index === 0) {
-      const badge = document.createElement('span');
-      badge.className = 'new-badge';
-      badge.textContent = 'NEW!';
-      card.prepend(badge);
-    }
-  });
-}
+const categoryFilters = document.querySelector('.category-filters');
+const preferredCategories = ['Combat', 'Incremental Games', 'Horror'];
+let activeCategory = 'All';
+let allVideos = [...videoGrid.querySelectorAll('.video-item')].map((card, index) => {
+  const button = card.querySelector('.video-play');
+  return {
+    id: card.dataset.id,
+    type: button.dataset.videoId ? 'youtube' : 'local',
+    youtubeId: button.dataset.videoId,
+    src: button.dataset.videoSrc,
+    category: card.dataset.category,
+    title: card.querySelector('.video-title').textContent,
+    description: card.querySelector('p').textContent,
+    addedAt: card.dataset.addedAt,
+    order: index
+  };
+});
 
 function playVideo(button) {
   const wrapper = button.closest('.video-wrapper');
@@ -59,6 +62,15 @@ videoGrid.addEventListener('click', (event) => {
 function makeCard(entry) {
   const card = document.createElement('div');
   card.className = 'video-item';
+  card.dataset.id = entry.id;
+  card.dataset.category = entry.category || 'Other';
+  if (entry.id === allVideos[0].id) {
+    card.classList.add('is-newest');
+    const badge = document.createElement('span');
+    badge.className = 'new-badge';
+    badge.textContent = 'NEW!';
+    card.append(badge);
+  }
   const wrapper = document.createElement('div');
   wrapper.className = 'video-wrapper';
   const button = document.createElement('button');
@@ -93,16 +105,62 @@ function makeCard(entry) {
   icon.textContent = '▶';
   button.append(icon);
   wrapper.append(button);
+  const category = document.createElement('span');
+  category.className = 'video-category';
+  category.textContent = entry.category || 'Other';
   const heading = document.createElement('h3');
   heading.className = 'video-title';
-  heading.textContent = entry.title;
+  heading.textContent = entry.title || 'Showcase Video';
   const description = document.createElement('p');
   description.textContent = entry.description;
-  card.append(wrapper, heading, description);
+  card.append(wrapper, category, heading, description);
   return card;
 }
 
-markNewest();
+function renderVideos() {
+  const visible = activeCategory === 'All' ? allVideos : allVideos.filter((entry) => (entry.category || 'Other') === activeCategory);
+  videoGrid.replaceChildren(...visible.map(makeCard));
+}
+
+function renderFilters() {
+  const counts = new Map();
+  for (const entry of allVideos) {
+    const category = entry.category || 'Other';
+    counts.set(category, (counts.get(category) || 0) + 1);
+  }
+  if (activeCategory !== 'All' && !counts.has(activeCategory)) activeCategory = 'All';
+  const categories = [...counts.keys()].sort((a, b) => {
+    const aIndex = preferredCategories.indexOf(a);
+    const bIndex = preferredCategories.indexOf(b);
+    if (aIndex !== -1 || bIndex !== -1) return (aIndex === -1 ? Infinity : aIndex) - (bIndex === -1 ? Infinity : bIndex);
+    return a.localeCompare(b);
+  });
+  categoryFilters.replaceChildren();
+  for (const category of ['All', ...categories]) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'category-filter';
+    button.dataset.category = category;
+    button.setAttribute('aria-pressed', String(activeCategory === category));
+    button.textContent = category;
+    const count = document.createElement('span');
+    count.className = 'category-count';
+    count.textContent = String(category === 'All' ? allVideos.length : counts.get(category));
+    button.append(count);
+    categoryFilters.append(button);
+  }
+}
+
+categoryFilters.addEventListener('click', (event) => {
+  const button = event.target.closest('.category-filter');
+  if (!button || !categoryFilters.contains(button)) return;
+  activeCategory = button.dataset.category;
+  renderFilters();
+  renderVideos();
+});
+
+renderFilters();
+renderVideos();
 fetch('videos.json', {cache: 'no-cache'})
   .then((response) => {
     if (!response.ok) throw new Error('Video catalog unavailable');
@@ -110,9 +168,9 @@ fetch('videos.json', {cache: 'no-cache'})
   })
   .then((entries) => {
     if (!Array.isArray(entries) || !entries.length) throw new Error('Video catalog empty');
-    entries.sort((a, b) => Date.parse(b.addedAt) - Date.parse(a.addedAt) || (a.order ?? 0) - (b.order ?? 0));
-    videoGrid.replaceChildren(...entries.map(makeCard));
-    markNewest();
+    allVideos = entries.sort((a, b) => Date.parse(b.addedAt) - Date.parse(a.addedAt) || (a.order ?? 0) - (b.order ?? 0));
+    renderFilters();
+    renderVideos();
   })
   .catch((error) => console.warn('Using the built-in video gallery:', error));
 
