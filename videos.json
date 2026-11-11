@@ -1,0 +1,34 @@
+[
+  {
+    "id": "Y6HPPqfk3Xs",
+    "type": "youtube",
+    "youtubeId": "Y6HPPqfk3Xs",
+    "description": "Ghost entity, spawns always in front of player and doesn't spawn if you look at a wall,\n\t\t\t\t\t\t\tthe ghostly effect is made with tweens, depending on what essence you give him something\n\t\t\t\t\t\t\tdifferent happens and\n\t\t\t\t\t\t\tplayer gets all kinds of client sided effects.",
+    "addedAt": "2026-11-11T00:00:00Z",
+    "order": 0
+  },
+  {
+    "id": "fao7F6kPKzU",
+    "type": "youtube",
+    "youtubeId": "fao7F6kPKzU",
+    "description": "FPS shooter game with lots of gore and ragdoll mechanics. Limbs also fly off depending on\n\t\t\t\t\t\t\twhere you hit your target.",
+    "addedAt": "2026-11-11T00:00:00Z",
+    "order": 1
+  },
+  {
+    "id": "kB9s2lICdAs",
+    "type": "youtube",
+    "youtubeId": "kB9s2lICdAs",
+    "description": "Brainrot game example, advanced UI systems and animation framework, tycoon framework,\n\t\t\t\t\t\t\tbrainrot collection framework,\n\t\t\t\t\t\t\tspawning system, rarity loottable system and player stat system",
+    "addedAt": "2026-11-11T00:00:00Z",
+    "order": 2
+  },
+  {
+    "id": "RQvTeZ_gHwc",
+    "type": "youtube",
+    "youtubeId": "RQvTeZ_gHwc",
+    "description": "Tool equip framework, you can equip a sword and your animations change, you can\n\t\t\t\t\t\t\tmultidirectional dash,\n\t\t\t\t\t\t\tcustom animation framework and a weapon postion loader.",
+    "addedAt": "2026-11-11T00:00:00Z",
+    "order": 3
+  }
+]
