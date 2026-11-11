@@ -47,5 +47,14 @@
     "description": "A simple parry based combat system, with abilities, parrying, blocking, guard break, dodging, stun systems and server authorative hitboxes",
     "addedAt": "2026-11-11T15:51:31Z",
     "category": "Combat"
+  },
+  {
+    "id": "9G0BEJvT6zc",
+    "type": "youtube",
+    "youtubeId": "9G0BEJvT6zc",
+    "title": "Horror Ambience",
+    "description": "A small showcase of ho",
+    "category": "Horror",
+    "addedAt": "2026-11-11T18:42:14Z"
   }
 ]
