@@ -9,7 +9,37 @@
 <title>ijs Programming | Official Portfolio</title>
 <link href="assets/css/fontawesome-all.min.css" rel="stylesheet"/><link href="assets/css/site.css" rel="stylesheet"/>
 </head>
-<body>
+<body><div aria-hidden="true" class="scroll-progress"></div><div aria-hidden="true" class="code-ambient"><pre class="ambient-column">-- server / systems
+local Players = game:GetService("Players")
+local function onPlayerAdded(player: Player)
+    local character = player.Character
+    if not character then return end
+    local state = { active = true }
+    return state
+end
+Players.PlayerAdded:Connect(onPlayerAdded)</pre><pre class="ambient-column">-- client / animation
+local TweenService = game:GetService("TweenService")
+local goal = { Transparency = 0 }
+local tween = TweenService:Create(part, info, goal)
+if tween then
+    tween:Play()
+end
+return tween</pre><pre class="ambient-column">-- shared / modules
+local Systems = {}
+function Systems.start(player: Player)
+    if not player then return end
+    local data = { loaded = true }
+    return data
+end
+return Systems</pre><pre class="ambient-column">-- gameplay / update
+local RunService = game:GetService("RunService")
+local elapsed = 0
+RunService.Heartbeat:Connect(function(dt)
+    elapsed += dt
+    if elapsed &gt; 1 then
+        elapsed = 0
+    end
+end)</pre></div>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
 <div class="header-inner">
@@ -17,7 +47,7 @@
 <button aria-controls="site-nav" aria-expanded="false" class="menu-toggle" type="button">Menu <span aria-hidden="true">☰</span></button>
 <nav aria-label="Main navigation" id="site-nav">
 <a href="#about">About</a><a href="#work">Work</a><a href="#hiring">Hiring</a><a href="#contact">Contact</a>
-</nav>
+<button aria-label="Pause background animation" aria-pressed="false" class="motion-toggle" type="button">Ⅱ  Pause motion</button></nav>
 </div>
 </header>
 <div id="top"></div>
@@ -29,7 +59,15 @@
 <p>Professional Fullstack Roblox Developer based in the Netherlands.</p>
 <div class="hero-actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button secondary" href="#contact">Get in touch <span aria-hidden="true">→</span></a></div>
 </div>
-<div aria-hidden="true" class="hero-visual"><div class="visual-grid"></div><div class="visual-orb"></div><div class="code-frame"><div class="frame-top"><span></span><span></span><span></span><b>ijs / programming</b></div><div class="code-lines"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="frame-bottom">BUILDING SYSTEMS THAT LAST <span>● ONLINE</span></div></div></div>
+<div aria-hidden="true" class="hero-visual"><div class="visual-grid"></div><div class="visual-orb"></div><div class="code-frame"><div class="frame-top"><span></span><span></span><span></span><b>ijs / programming</b></div><pre class="hero-code">local <span class="syntax-var">Players</span> = game:GetService(<span class="syntax-string">"Players"</span>)
+
+<span class="syntax-keyword">local function</span> build(player: Player)
+    <span class="syntax-keyword">if</span> player.Character <span class="syntax-keyword">then</span>
+        <span class="syntax-var">print</span>(<span class="syntax-string">"systems online"</span>)
+    <span class="syntax-keyword">end</span>
+<span class="syntax-keyword">end</span>
+
+Players.PlayerAdded:Connect(build)</pre><div class="frame-bottom">BUILDING SYSTEMS THAT LAST <span>● ONLINE</span></div></div></div>
 <a class="scroll-cue" href="#about">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a>
 </section>
 <div class="section-stack"><section class="content-section" id="about">
@@ -154,7 +192,6 @@
 <h2 class="major">Contact</h2>
 <p>Feel free to reach out to me for commissions or inquiries through the platforms below.</p>
 <div class="contact-links"><a class="contact-card" href="https://discord.com/users/817685300633403392" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="contact-icon fab fa-discord"></span><span class="contact-copy"><span class="contact-label">Discord</span><strong>icegamrr1718</strong></span><span aria-hidden="true" class="contact-arrow">↗</span></a><a class="contact-card" href="mailto:ijsprogramming@gmail.com"><span aria-hidden="true" class="contact-icon fas fa-envelope"></span><span class="contact-copy"><span class="contact-label">Email</span><strong>ijsprogramming@gmail.com</strong></span><span aria-hidden="true" class="contact-arrow">↗</span></a></div>
-
 </section></div>
 </main>
 <footer class="site-footer"><div class="footer-inner"><a aria-label="Back to top" class="brand" href="#top"><span class="brand-mark">ijs<span>.</span></span><span class="brand-name">Programming</span></a><div><p class="copyright" style="margin:0;">© Official ijs Programming. All rights reserved.</p><p style="color: rgba(255,255,255,0.2); font-size: 0.6rem; margin:0;">Based in the Netherlands</p></div><a class="back-top" href="#top">Back to top ↑</a></div></footer>

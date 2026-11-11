@@ -123,3 +123,38 @@ const observer = new IntersectionObserver((entries) => {
   }
 }, {rootMargin: '-25% 0px -60% 0px'});
 document.querySelectorAll('.content-section').forEach((section) => observer.observe(section));
+
+const scrollProgress = document.querySelector('.scroll-progress');
+let progressQueued = false;
+function updateScrollProgress() {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollable > 0 ? Math.min(1, window.scrollY / scrollable) : 0;
+  scrollProgress.style.transform = `scaleX(${progress})`;
+  progressQueued = false;
+}
+window.addEventListener('scroll', () => {
+  if (!progressQueued) {
+    progressQueued = true;
+    requestAnimationFrame(updateScrollProgress);
+  }
+}, {passive: true});
+window.addEventListener('resize', updateScrollProgress);
+updateScrollProgress();
+
+const motionToggle = document.querySelector('.motion-toggle');
+function setMotionPaused(paused) {
+  document.body.classList.toggle('motion-paused', paused);
+  motionToggle.setAttribute('aria-pressed', String(paused));
+  motionToggle.setAttribute('aria-label', paused ? 'Resume background animation' : 'Pause background animation');
+  motionToggle.textContent = paused ? '▶  Resume motion' : 'Ⅱ  Pause motion';
+}
+try {
+  setMotionPaused(localStorage.getItem('ijs-motion-paused') === 'true');
+} catch {
+  setMotionPaused(false);
+}
+motionToggle.addEventListener('click', () => {
+  const paused = !document.body.classList.contains('motion-paused');
+  setMotionPaused(paused);
+  try { localStorage.setItem('ijs-motion-paused', String(paused)); } catch {}
+});
