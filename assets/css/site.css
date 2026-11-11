@@ -52,3 +52,15 @@ main,.site-footer{position:relative;z-index:1}
 .video-category{display:inline-block;margin:20px 24px 0;padding:4px 9px;border:1px solid rgba(136,244,210,.25);border-radius:4px;color:var(--accent);background:rgba(136,244,210,.07);font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
 .video-item .video-title{padding-top:9px}
 @media(max-width:680px){.category-filters{gap:7px}.category-filter{font-size:.8rem;padding:7px 10px}.video-category{margin:18px 19px 0}.video-item .video-title{padding-left:19px;padding-right:19px}}
+
+/* Reliable email contact */
+button.contact-card{width:100%;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.email-copy .copy-label{align-self:center;font-size:.78rem;font-weight:800;letter-spacing:.04em;border:1px solid var(--line);border-radius:5px;padding:5px 8px}
+.email-copy:hover .copy-label{border-color:var(--accent)}
+.email-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px 20px;margin-top:15px;min-height:26px}
+.email-app-link{color:var(--accent);font-size:.88rem;font-weight:700;text-decoration:none}
+.email-app-link:hover{text-decoration:underline}
+.copy-status{color:var(--muted);font-size:.85rem}
+.manual-email{display:block;max-width:100%;margin-top:12px;padding:9px 12px;border:1px solid var(--accent);border-radius:6px;background:var(--surface);color:var(--text);font:inherit}
+.manual-email[hidden]{display:none}
+@media(max-width:680px){.email-copy .copy-label{padding:4px 6px}}

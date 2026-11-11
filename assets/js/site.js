@@ -199,3 +199,46 @@ window.addEventListener('scroll', () => {
 }, {passive: true});
 window.addEventListener('resize', updateScrollProgress);
 updateScrollProgress();
+
+const emailCopyButton = document.querySelector('.email-copy');
+const emailCopyLabel = emailCopyButton.querySelector('.copy-label');
+const emailCopyStatus = document.querySelector('.copy-status');
+const manualEmail = document.querySelector('.manual-email');
+let emailResetTimer;
+emailCopyButton.addEventListener('click', async () => {
+  const address = emailCopyButton.dataset.email;
+  let copied = false;
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(address);
+      copied = true;
+    } catch {}
+  }
+  if (!copied) {
+    const temporary = document.createElement('textarea');
+    temporary.value = address;
+    temporary.setAttribute('readonly', '');
+    temporary.style.position = 'fixed';
+    temporary.style.opacity = '0';
+    document.body.append(temporary);
+    temporary.select();
+    try { copied = document.execCommand('copy'); } catch {}
+    temporary.remove();
+  }
+  clearTimeout(emailResetTimer);
+  if (copied) {
+    manualEmail.hidden = true;
+    emailCopyLabel.textContent = 'Copied!';
+    emailCopyStatus.textContent = 'Email address copied to clipboard.';
+    emailResetTimer = setTimeout(() => {
+      emailCopyLabel.textContent = 'Copy';
+      emailCopyStatus.textContent = '';
+    }, 3500);
+  } else {
+    emailCopyLabel.textContent = 'Select';
+    emailCopyStatus.textContent = 'Select the address below and copy it.';
+    manualEmail.hidden = false;
+    manualEmail.focus();
+    manualEmail.select();
+  }
+});
